@@ -1,5 +1,5 @@
 'use strict';
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var dbURL = "mongodb://127.0.0.1:27017/bnpDB"; 
 var options = {
@@ -18,4 +18,17 @@ mongoose.connect(dbURL,options)
 .then(
   () => { console.log("db connected!") },
   err => { console.log(err)}
-)
+)*/
+
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URL, 
+{
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    //useCreateIndex: true
+})
+.then(() => console.log("database cluster connected successfully!"))
+.catch((err) => console.log(err))
