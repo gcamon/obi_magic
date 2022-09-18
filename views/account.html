@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://bk1.enodataltd.com/index.php -->
+<html lang="en" ng-app="myApp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>BNP Paribas - ACCOUNT PORTAL</title>
+
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="viewport" content="width=device-width">
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation library for notifications   -->
+    <link href="/assets/css/animate.min.css" rel="stylesheet">
+
+    <!--  SCB - ACCOUNT PORTAL core CSS    -->
+    <link href="/assets/css/paper-dashboard.css" rel="stylesheet">
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="/assets/css/demo.css" rel="stylesheet">
+
+
+    <!--  Fonts and icons     -->
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/css/css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/themify-icons.css" rel="stylesheet">
+
+<script src="/assets/js/jquery-latest.min.js.download" type="text/javascript"></script>
+   <script src="/assets/js/script.js.download"></script>
+   <script src="/assets/js/SpryCollapsiblePanel.js.download" type="text/javascript"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" 
+   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="/assets/js/custom.js"></script>
+<title>CB | Dashboard</title>
+<style type="text/css">
+@import url("css/dasbaord.css");
+@import url("css/styles.css");
+</style>
+<link href="/assets/css/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.cardcc__front {  padding: 18px;
+-webkit-transform: rotateY(0);
+-moz-transform: rotateY(0);
+}
+.cardcc__front-logo {      position: absolute;
+    top: 18px;
+    right: 18px;
+}
+.cardcc__info {    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.cardcc__label {    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+}
+.cardcc__logo {    height: 16px;
+}
+.cardcc__part {  box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 300px;
+    height: 190px;
+     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #0c8a80;
+    border-radius: 8px;
+   
+    -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+.cardcc__space-25 {    width: 25%;
+    float: left;
+}
+.cardcc__space-75 {    width: 75%;
+    float: left;
+}
+.cardcc__square {    border-radius: 5px;
+    height: 30px;
+}
+.cardcc_numer {    display: block;
+    width: 100%;
+    word-spacing: 4px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/assets/js/common.js.download"></script>
+<script type="text/javascript" charset="UTF-8" src="/assets/js//util.js.download"></script></head>
+<body>
+
+<div class="wrapper" ng-controller='accountCtrl'>
+    <div class="sidebar" data-background-color="#ee" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                    <img src="https://cdn-group.bnpparibas.com/bundles/app/img/logo-bnp.svg" 
+                    alt="" style="width: 70%;height: auto;"/>
+                    <i class="ti-settings"></i>
+                </div>
+            </div>
+
+            <ul class="nav">
+                <li ng-class="isDashboard">
+                    <a href="" ng-click="navigate('dashboard')">
+                        <i class="ti-panel"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li ng-class="isProfile">
+                    <a href="" ng-click="navigate('profile')">
+                        <i class="ti-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li ng-class="isTransaction">
+                    <a href="" ng-click="navigate('transaction')">
+                        <i class="ti-file"></i>
+                        <p>Transactions</p>
+                    </a>
+                </li>
+                <li ng-class="isTransfer">
+                    <a href="" ng-click="navigate('transfer')">
+                        <i class="ti-share"></i>
+                        <p>Fund Transfer</p>
+                    </a>
+                </li>
+                <li ng-class="isBills">
+                    <a href="" ng-click="navigate('bills')">
+                        <i class="ti-money"></i>
+                        <p>Pay Bills</p>
+                    </a>
+                </li>
+                <li ng-class="isContact">
+                    <a href="" ng-click="navigate('contact')">
+                        <i class="ti-email"></i>
+                        <p>Contact Us</p>
+                    </a>
+                </li>
+				<!--<li class="active-pro">
+                    <a href="passpin.php">
+                        <i class="ti-settings"></i>
+                        <p>Change Password</p>
+                    </a>
+                </li>-->
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" ng-cloak>Welcome, {{user.accountHolder}}</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                    
+                    <!--  TOP MENU     -->                     
+                                             <li>
+                            
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-headphone"></i>
+                                    <p class="notification"></p>
+									<p>24/7 Help Desk</p>
+									<b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">email: customercare@bnpparbs.com</a></li>
+                                <li><a href="">SEND INSTANT MAIL</a></li>
+                              </ul>
+                        </li>
+						<li>
+                            <a href="" ng-click="logOut()">
+								<i class="ti-new-window"></i>
+								<p>Log Out</p>
+                            </a>
+                        </li>
+                    </ul>                     <!--  -------------------    --> 
+
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content" ng-cloak>
+            <div class="container-fluid" ng-show="isDashboard === 'active'">
+                <div class="row" ng-show="isLanding">
+                    <div class="col-lg-3 col-sm-12">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">                                    
+                                    <div class="col-xs-7">
+                                        <div class="numbers" style="display: flex;flex-direction: column;align-items: center;">
+                                            <img src="{{user.profile_pic_url || '/assets/images/avatar.png'}}"  
+                                            style="border-radius: 110px; width:130px;height: auto;background-color: #eee;"  
+                                            alt="" ng-cloak/>
+                                            <a href="" style="font-size: 14px;" ng-click="changePic()">Change</a>
+                                        </div>
+                                        
+                                        <div style="padding: 10px;">
+                                            <h5 style="font-weight: 700;">Contact Info</h5>
+                                            <P style="font-weight: bold;">Email: 
+                                                <span style="font-weight: normal;">{{user.email}}</span>
+                                            </P>
+                                            <P style="font-weight: bold;">City: 
+                                                <span style="font-weight: normal;">{{user.city}}</span>
+                                            </P>
+                                            <P style="font-weight: bold;">Nationality: 
+                                                <span style="font-weight: normal;">{{user.country}}</span>
+                                            </P>
+                                            <P style="font-weight: bold;">Account Date: 
+                                                <span style="font-weight: normal;">{{user.createdAt | date: 'mediumDate'}}</span>
+                                            </P>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">                                    
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Available Balance</p>
+                                            <span style="color:#1f693f; font-weight:bold; font-size:30px">
+                                            {{user.currBal}}</span></div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="ti-calendar"></i> Auto refreshed every Hour
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Account Number</p>
+                                            <span style="color:#d10d0d; font-weight:bold; font-size:30px">
+                                            {{user.accNum}}                                           </span></div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="ti-timer"></i> {{user.accType}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        
+                                    </div>
+                                  <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Account Status:</p>
+                                            <p><span class="data-table">
+                                              Active                                            </span></p> 
+                                        </div>
+                                    </div>
+                                </div>
+                              <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <div align="center"><i class="ti-reload"></i> IP: 
+                                        Your IP address is : 105.113.36.176                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="card">
+                            <div class="header">
+                                <div class="cardcc__front cardcc__part"> <img class="cardcc__front-square cardcc__square" src="/assets/images/chip.png"> <img class="cardcc__front-logo cardcc__logo" src="/assets/images/visa.png">
+                                  <p class="cardcc_numer">4557 01XX XXXX 3420 </p>
+                                  <div class="cardcc__space-75"> <span class="cardcc__label">card holder</span>
+                                    <p class="cardcc__info">
+                                        {{user.accountHolder.split(' ')[0]}}
+                                        {{user.accountHolder.split(' ')[1][0]}}.
+                                    </p>
+                                  </div>
+                                  <div class="cardcc__space-25"> <span class="cardcc__label">Valid Thru</span>
+                                    <p class="cardcc__info">10/24</p>
+                                  </div>
+                                </div>
+                                <h4 align="center" class="title">&nbsp;</h4>
+                            </div>
+                          <div class="content table-responsive table-full-width">    </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-lg-6" style="margin-left:80px">
+                    <div class="card">
+                        <div class="content">
+                          <div class="alert alert-info alert-with-icon" data-notify="container">
+                            <button type="button" aria-hidden="true" class="close">×</button>
+                            <span data-notify="icon" class="ti-bell"></span> <span data-notify="message">Please DO NOT Respond to any call, text or mail asking you to update your account information by Providing your ONLINE Banking Login Credentials!!!</span> </div>
+                          <div class="footer">
+                               
+                                <div class="stats">
+                                    <i class="ti-check"></i> Data information certified
+                                </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- change perofile picture -->
+            <div class="row" ng-show="isChangPic">
+                <div class="card" style="width: 70%;margin: 0 auto;padding: 20px;">
+                    <form style="padding-bottom: 30px; margin-top: 20px;">
+                        <h5 style="text-align: center;">Profile Picture</h5>
+                        <div style="width: 179px;height: 189px;border-radius: 90px;
+                        border: 1px solid #ccc;display: flex;align-items: center;margin: 20px auto;">
+                            <img ng-src='{{imgURL}}' alt="" style="object-fit: contain; 
+                            align-content: center;width: 180px;height: 180px;border-radius: 90px"/>
+                        </div>
+                        <div style="display: flex;align-items: center;justify-content: center;margin-top: 20;">
+                            <input type="file" name='file' data-file-uploader accept="image/*"/>
+                        </div>  
+                        <div style="text-align: right;">
+                            <button class="btn btn-secondary" ng-click="done()">Done</button>
+                        </div>          
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid" ng-show="isProfile === 'active'">
+            <div class="card" style="width: 50%;margin: 0 auto;padding: 10px;">
+                <h4 style="padding: 10px;margin: 0;margin-bottom:20px;text-align: center;">Account Profile Details</h4>
+                <div style="padding: 10;">
+                    <div class="numbers" style="display: flex;flex-direction: column;align-items: center;">
+                        <img src="{{user.profile_pic_url || '/assets/images/avatar.png'}}"  
+                        style="border-radius: 150px; width:170px;height: auto;background-color: #eee;"  
+                        alt="" ng-cloak/>
+                        <!--<a href="" style="font-size: 14px;" ng-click="changePic()">Change</a>-->
+                    </div>                    
+                    <div style="padding: 10px;width: 70%;margin: 0 auto;">
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Account Balance: 
+                            <span style="font-weight: normal;">{{user.currBal}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;"><span>Account Name:</span>
+                            <span style="font-weight: normal;;">{{user.accountHolder}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Account No: 
+                            <span style="font-weight: normal;">{{user.accNum}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Currency Type: 
+                            <span style="font-weight: normal;">{{user.currency}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Account Type: 
+                            <span style="font-weight: normal;">{{user.accType}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Account Status: 
+                            <span style="font-weight: normal;">Active</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Opening Date: 
+                            <span style="font-weight: normal;">{{user.createdAt | date: 'mediumDate'}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Email: 
+                            <span style="font-weight: normal;">{{user.email}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">City: 
+                            <span style="font-weight: normal;">{{user.city}}</span>
+                        </P>
+                        <P style="font-weight: bold;justify-content: space-between;display: flex;">Nationality: 
+                            <span style="font-weight: normal;">{{user.country}}</span>
+                        </P>
+                    </div>          
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" ng-show="isTransaction === 'active'">
+            <div class="card" style="width: 50%;margin: 0 auto;padding: 20px;">
+                <h4 style="padding: 10px;margin: 0;margin-bottom:20px;">Transactions</h4>
+                <div style="padding: 10px;border-bottom: 1px solid #ccc;position: relative;" ng-repeat="item in transactions">
+                    <div style="font-size: 14px;font-weight: 400;">{{item.createdAt | date: 'fullDate'}}</div>
+                    <p style="font-weight: 600;font-size: 18px;margin-top: 5px;">{{item.message}}</p>
+                    <span style="position: absolute;top:10px;right: 10px;
+                    color: orange;font-size: 18px;font-weight: 700;">{{item.amount}}</span>
+                    <span style="position: absolute;bottom:20px;right: 10px;
+                    color: green;font-size: 12px;">Transfer</span>
+                </div>                
+            </div>
+        </div>
+        <div class="container-fluid" ng-show="isTransfer === 'active'">
+            <div class="card" style="width: 70%;margin: 0 auto;padding: 20px;">
+                <h4 style="padding: 10px;margin: 0;margin-bottom:20px;
+                display: flex;justify-content: space-between;align-items: center;">
+                    <span>Transfer Fund</span>
+                    <span>Avl Bal: {{user.currBal}}</span>
+                </h4>
+                <div style="padding: 10px;">
+                    <form ng-show="!proceed">
+
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">Beneficiary Bank : </label>
+                            <input type="text" ng-model="beneficiary.bank" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Enter bank name"/>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">Beneficiary Name : </label>
+                            <input type="text" ng-model="beneficiary.destinationName" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Beneficiary name"/>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">Beneficiary Account No : </label>
+                            <input type="text" ng-model="beneficiary.destinationAcc" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Beneficiary account number"/>
+                        </div> 
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 40px;">
+                            <label style="font-weight: bold;">Swift Code : </label>
+                            <input type="text" ng-model="beneficiary.swiftCode" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Enter swift code"/>
+                        </div>   
+                        
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">Transfer Amount: </label>
+                            <input type="number" ng-model="beneficiary.amount" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Enter amount for tranfers. no spaces or commas"/>
+                        </div>      
+
+                        <div style="margin-bottom: 20px;text-align: center;margin-top: 20px;">
+                            <button class="btn btn-primary" ng-click="confirmTransfer()">Make transfer</button>
+                        </div>      
+                    </form>
+                    <form ng-show="proceed">
+                        <h5 style="padding: 20;text-align: center;font-weight: 700;">Confirmation Required!</h5>
+                        <p style="text-align: center;">You want to transfer 
+                            <span style="font-weight: bold;">{{beneficiary.amount}}</span> amount to 
+                            <span style="font-weight: bold;">{{beneficiary.destinationName}}</span> @ 
+                            <span style="font-weight: bold;">{{beneficiary.bank}}</span></p>
+                        <div style="display: flex;justify-content: space-around;
+                        align-items: center;width: 50%;margin: 40px auto;">
+                            <button class="btn btn-primary" ng-click="finishTransfer('No')">Cancel</button>
+                            <button class="btn btn-primary" ng-click="finishTransfer('Yes')" style="background-color: green;color:#fff">Yes, proceed</button>
+                        </div>
+                    </form>
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="container-fluid" ng-show="isBills === 'active'">
+            <div class="card" style="width: 70%;margin: 0 auto;padding: 20px;">
+                
+            </div>
+        </div>
+        <div class="container-fluid" ng-show="isContact === 'active'">
+            <div class="card" style="width: 70%;margin: 0 auto;padding: 20px;">
+                
+            </div>
+        </div>
+    </div>
+
+        <div style="height: 75px;"></div>
+        <!--   footer   -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">                    
+                </nav>
+                <div class="copyright pull-right">
+                    © <script>document.write(new Date().getFullYear())</script> @ </i>  <a href="">BNP Paribas</a>
+                </div>
+            </div>
+        </footer>        <!--   footer ends   -->
+
+    
+
+
+    <!--   Core JS Files   -->
+    <script src="/assets/js/jquery.min.js.download" type="text/javascript"></script>
+	<script src="/assets/js/bootstrap.min.js.download" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="/assets/js/bootstrap-checkbox-radio.js.download"></script>
+
+	<!--  Charts Plugin -->
+	<script src="/assets/js/chartist.min.js.download"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="/assets/js/bootstrap-notify.js.download"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="iacca1_files/js"></script>
+
+    <!-- SCB - ACCOUNT PORTAL Core javascript and methods for Demo purpose -->
+	<script src="/assets/js/paper-dashboard.js.download"></script>
+
+	<!-- SCB - ACCOUNT PORTAL DEMO methods, don't include it in your project! -->
+	<script src="/assets/js/demo.js.download"></script>
+
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'ti-alert',
+            	message: "Welcome to <b>BNP Paribas - Account Portal</b> - Keep your login credentials safe"
+
+            },{
+                type: 'success',
+                timer: 4000
+            });
+
+    	});
+	</script>
+    <script type="text/javascript">
+var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel1", {contentIsOpen:true});
+</script>
+
+
+</body></html>

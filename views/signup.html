@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app='myApp'><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+
+	<title>:::</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" 
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/assets/js/custom.js"></script>
+</head>
+
+<body>
+	<div class="container" ng-controller='registerCtrl'>
+        
+        
+		<div style="width: 40%;height: 300px;text-align: center;
+        padding: 15;margin: 120px auto;">
+            <p>Please register your account with us to take the benefits of our Online Banking facilities.</p>
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <img src="https://cdn-group.bnpparibas.com/bundles/app/img/logo-bnp.svg" alt="" style="width: 40%;height: auto;"/>
+                <h5>New Account</h5>
+            </div>
+
+            <div ng-show="!isComplete">
+ 
+            <form style="padding-bottom: 30px;" ng-show="!isProfilePic">
+                <div>
+                    <input type="text" placeholder="Full name" ng-model='user.accountHolder' class="form-control" style="margin-top: 20px;"/>
+                    
+                    <select placeholder="Gender" ng-model='user.gender' class="form-control" style="margin-top: 20px;">
+                        <option disabled selected value="">Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <input type="text" placeholder="Marital status" ng-model='user.status' class="form-control" style="margin-top: 20px;"/>
+                    <input type="text" ng-model='user.dob' placeholder="Date of birth (dd-mm-yyyy)" class="form-control" style="margin-top: 20px;"/>
+                    <input type="text" placeholder="Occupation" ng-model='user.occupation' class="form-control" style="margin-top: 20px;"/>
+                </div>
+                <hr>
+                <div>
+                    <input type="text" placeholder="Email address" ng-model='user.email' class="form-control" style="margin-top: 20px;"/>
+                    <input type="text" placeholder="Home address" ng-model='user.address' class="form-control" style="margin-top: 20px;"/>
+                    <input type="text" placeholder="City" ng-model='user.city' class="form-control" style="margin-top: 20px;"/>
+                    <input type="text" placeholder="Country" ng-model='user.country' class="form-control" style="margin-top: 20px;"/> 
+                    <input type="text" placeholder="Zip Code" ng-model='user.zipCode' class="form-control" style="margin-top: 20px;"/>
+                </div> 
+                <hr/>
+                <div>
+                    <select ng-model='user.accType' class="form-control" style="margin-top: 20px;">
+                        <option disabled selected value="">Select Account Type</option>
+                        <option>Savings Account</option>
+                        <option>Checking Account</option>
+                        <option>Non-Residence Account</option>
+                    </select>
+                    <!--<input placeholder="Username" ng-model='user.username' type="text" class="form-control"style="margin-top: 20px;"/>
+                    <input placeholder="Password" type="password" ng-model='user.password' class="form-control"style="margin-top: 20px;"/>-->
+                </div>
+                <button class="btn btn-info btn-block" ng-click='continue()' 
+                style="margin-top: 20px;margin-bottom: 10px;">Continue</button>
+                <p>Already have an account? <a href="/en/offshore-i/o/login">Sign in.</a></p>
+            </form>
+            <form style="padding-bottom: 30px; margin-top: 20px;" ng-show="isProfilePic">
+                <h5>Profile Picture</h5>
+                <div style="width: 179px;height: 189px;border-radius: 90px;
+                border: 1px solid #ccc;display: flex;align-items: center;margin: 20px auto;">
+                    <img ng-src='{{imgURL}}' alt="" style="object-fit: contain; 
+                    align-content: center;width: 180px;height: 180px;border-radius: 90px"/>
+                </div>
+                <input type="file" name='file' data-file-uploader accept="image/*"/>
+                <div style="display: flex;justify-content: space-between;margin-top: 15px;">
+                    <button class="btn btn-simple" ng-click="back()" style="color: green"><< Back </button>
+                    <button class="btn btn-info" ng-click='submitForm()'>Finish</button>
+                </div>                
+            </form>
+            </div>
+            <div ng-show="isComplete" style="margin-top: 20px;">
+                <h3>Registration completed!</h3>
+                <P>Your request is received and it's being reviewed. 
+                    We'll get back to you within 3 working days.</P>
+                <div>
+                    <a href="/en/offshore-i/o/login">Sign in</a>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+</html>
