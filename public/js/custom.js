@@ -15,7 +15,7 @@ function ($rootScope,httpPostFactory,localManager) {
                     $rootScope.imgURL = '/uploads/' + response.data[0].filename;
                     if(localManager.getValue('user')){
                         var person = localManager.getValue('user');
-                        person.profile_pic_url = $rootScope.imgURL;
+                        person.profile_pic_url = window.location.host + $rootScope.imgURL;
                         localManager.setValue('user',person);
                     }
                 });
@@ -223,7 +223,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope){
     $http.get(`/en/offshore-i/o/auth/transfer?userId=${$rootScope.user._id}`)
     .then(function(response){
         $scope.transactions = (response.data.length > 0)  ? response.data 
-        : [{amount:"$1,230,200",createdAt:new Date(),message:"BNP/channel0123"}]
+        : [];
     }).catch(function(err){
         console.log(err)
     })
