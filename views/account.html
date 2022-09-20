@@ -291,7 +291,8 @@
                                         <div class="numbers">
                                             <p>Account Number</p>
                                             <span style="color:#d10d0d; font-weight:bold; font-size:30px">
-                                            {{user.accNum}}                                           </span></div>
+                                            {{user.accNum}}</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="footer">
@@ -352,7 +353,7 @@
                     <div class="card">
                         <div class="content">
                           <div class="alert alert-info alert-with-icon" data-notify="container">
-                            <button type="button" aria-hidden="true" class="close">×</button>
+                            <button type="button" aria-hidden="true" class="close"></button>
                             <span data-notify="icon" class="ti-bell"></span> <span data-notify="message">Please DO NOT Respond to any call, text or mail asking you to update your account information by Providing your ONLINE Banking Login Credentials!!!</span> </div>
                           <div class="footer">
                                
@@ -392,7 +393,7 @@
                 <h4 style="padding: 10px;margin: 0;margin-bottom:20px;text-align: center;">Account Profile Details</h4>
                 <div style="padding: 10;">
                     <div class="numbers" style="display: flex;flex-direction: column;align-items: center;">
-                        <img src="{{user.profile_pic_url || '/assets/images/avatar.png'}}"  
+                        <img src="{{/user.profile_pic_url || '/assets/images/avatar.png'}}"  
                         style="border-radius: 150px; width:170px;height: auto;background-color: #eee;"  
                         alt="" ng-cloak/>
                         <!--<a href="" style="font-size: 14px;" ng-click="changePic()">Change</a>-->
@@ -505,7 +506,8 @@
         </div>
         <div class="container-fluid" ng-show="isBills === 'active'">
             <div class="card" style="width: 70%;margin: 0 auto;padding: 20px;">
-                
+                <h4 style="padding: 10px;margin: 0;margin-bottom:20px;">Pay Bills</h4>
+                <p style="text-align: center;padding: 20px;margin-top: 50px;">Bills payments is currently not avaialble in your region</p>
             </div>
         </div>
         <div class="container-fluid" ng-show="isContact === 'active'">
