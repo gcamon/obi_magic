@@ -134,11 +134,16 @@ function($scope,$http,httpPostFactory,localManager){
     
 }])
 
-app.controller('accountCtrl',['$scope','$http','httpPostFactory','localManager','$rootScope',
-function($scope,$http,httpPostFactory,localManager,$rootScope){
+app.controller('accountCtrl',['$scope','$http','httpPostFactory','localManager','$rootScope','$interval',
+function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
     if(!localManager.getValue('user')){
         window.location.href = '/en/offshore-i/o/login'
     }
+
+    $.getJSON('https://api.db-ip.com/v2/free/self', function(data) {
+        //var ipDetails = JSON.stringify(data, null, 2)
+        $rootScope.ipAddress = data.ipAddress;
+    });
 
     $scope.beneficiary = {};
 
@@ -237,8 +242,111 @@ function($scope,$http,httpPostFactory,localManager,$rootScope){
         $scope.proceed = true;
     }
 
+    $scope.displayFail = false;
+    $scope.isStartTransfer = false;
+
     $scope.finishTransfer = function(answer){
-        if(answer == 'Yes'){
+        if(answer == 'Yes'){    
+        $scope.isStartTransfer = true;
+        var splashmessage=new Array()
+
+        splashmessage[0]='PLEASE WAIT'
+
+        splashmessage[1]='PLEASE WAIT'
+
+        splashmessage[2]='PROCESSING TRANSFER'
+
+        splashmessage[3]='ACCOUNT VERIFICATION'
+
+        splashmessage[4]='.ACCOUNT VERIFICATION.'
+
+        splashmessage[5]='..ACCOUNT VERIFICATION..'
+
+        splashmessage[6]='...ACCOUNT VERIFICATION...'
+
+        splashmessage[7]='ACCOUNT NAME AND NUMBER VERIFIED !!!'
+
+        splashmessage[8]='ACCOUNT NAME AND NUMBER VERIFIED !!!'
+
+        splashmessage[9]='PLEASE WAIT'
+
+        splashmessage[10]='ACCOUNT VERIFICATION'
+
+        splashmessage[11]='.ACCOUNT VERIFICATION.'
+
+        splashmessage[12]='..ACCOUNT VERIFICATION..'
+
+        splashmessage[13]='...ACCOUNT VERIFICATION...'
+
+        splashmessage[14]='DESTINATED ACCOUNT VERIFIED !!!'
+
+        splashmessage[15]='DESTINATED ACCOUNT VERIFIED !!!'
+
+        splashmessage[16]='PLEASE WAIT'
+
+        splashmessage[17]='SWIFT CODE VERIFICATION'
+
+        splashmessage[18]='.SWIFT CODE VERIFICATION.'
+
+        splashmessage[19]='..SWIFT CODE VERIFICATION..'
+
+        splashmessage[20]='SWIFT CODE VERIFICATION COMPLETED'
+
+        splashmessage[21]='YOUR TRANSFER DATA IS BEING PROCESSED'
+
+        splashmessage[22]= '1% OF TRANSFER COMPLETED'
+
+        splashmessage[23]='3% OF TRANSFER COMPLETED.....'
+
+        splashmessage[24]='5% OF TRANSFER COMPLETED........'
+
+        splashmessage[25]='9% OF TRANSFER COMPLETED...........'
+
+        splashmessage[26]='12% OF TRANSFER COMPLETED.'
+
+        splashmessage[27]='16% OF TRANSFER COMPLETED.....'
+
+        splashmessage[28]='21% OF TRANSFER COMPLETED........'
+
+        splashmessage[29]='25% OF TRANSFER COMPLETED...........'
+
+        splashmessage[30]='30% OF TRANSFER COMPLETED.'
+
+        splashmessage[31]='35% OF TRANSFER COMPLETED.....'
+
+        splashmessage[32]='39% OF TRANSFER COMPLETED........'
+
+        splashmessage[33]='42% OF TRANSFER COMPLETED...........'
+
+        splashmessage[34]='46% OF TRANSFER COMPLETED.'
+
+        splashmessage[35]='52% OF TRANSFER COMPLETED.....'
+
+        splashmessage[36]='58% OF TRANSFER COMPLETED........'
+
+        splashmessage[37]='62% OF TRANSFER COMPLETED...........'
+
+        splashmessage[38]='65% OF TRANSFER COMPLETED.'
+
+        splashmessage[39]='67% OF TRANSFER COMPLETED.....'
+
+        splashmessage[40]='69% OF TRANSFER COMPLETED........'
+
+        var intervals = 2000;
+        var i = 0;
+
+        var displayMessage = function() {
+            if(i < splashmessage.length){
+                $rootScope.displayMsg = splashmessage[i];
+                i++;
+            } else {
+                $rootScope.displayFail = true;
+                $interval.cancel(intervalVal);
+              
+            }
+        }
+
+        var intervalVal = $interval(displayMessage,intervals)
 
         } else {
             $scope.proceed = false;

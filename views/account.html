@@ -323,7 +323,7 @@
                                     <hr>
                                     <div class="stats">
                                         <div align="center"><i class="ti-reload"></i> IP: 
-                                        Your IP address is : 105.113.36.176                                        </div>
+                                        Your IP address is : {{ipAddress || '105.113.36.176'}}                                   </div>
                                     </div>
                                 </div>
                             </div>
@@ -443,7 +443,8 @@
                     color: orange;font-size: 18px;font-weight: 700;">{{item.amount}}</span>
                     <span style="position: absolute;bottom:20px;right: 10px;
                     color: green;font-size: 12px;">Transfer</span>
-                </div>                
+                </div>    
+                <p ng-if="transactions.length === 0" style="text-align: center;">No transactions made at the moment.</p>            
             </div>
         </div>
         <div class="container-fluid" ng-show="isTransfer === 'active'">
@@ -487,7 +488,7 @@
                             <button class="btn btn-primary" ng-click="confirmTransfer()">Make transfer</button>
                         </div>      
                     </form>
-                    <form ng-show="proceed">
+                    <form ng-show="proceed && !isStartTransfer">
                         <h5 style="padding: 20;text-align: center;font-weight: 700;">Confirmation Required!</h5>
                         <p style="text-align: center;">You want to transfer 
                             <span style="font-weight: bold;">{{beneficiary.amount}}</span> amount to 
@@ -499,6 +500,17 @@
                             <button class="btn btn-primary" ng-click="finishTransfer('Yes')" style="background-color: green;color:#fff">Yes, proceed</button>
                         </div>
                     </form>
+                    <div ng-show="isStartTransfer">
+                        <div ng-if="!displayFail">
+                            <h4 style="text-align: center;">Transfer in progress...</h4>
+                            <p style="text-align: center;">{{displayMsg}}</p>
+                        </div>
+                        <div ng-if='displayFail'>                           
+                            <h4 style="color: red;text-align: center;">Code E9031 error has occured!.</h4>
+                            <p style="font-size: 18px;font-weight: bold;text-align: center;">Transfer cannot be completed.</p>
+                            <p style="text-align: center;">Please contact the administrator to rectify issues with the tranfer and try again later.</p>
+                        </div>
+                    </div>
 
                 </div>
                 
@@ -512,7 +524,19 @@
         </div>
         <div class="container-fluid" ng-show="isContact === 'active'">
             <div class="card" style="width: 70%;margin: 0 auto;padding: 20px;">
-                
+                <h4 style="padding: 10px;margin: 0;margin-bottom:20px;">Contact Us</h4>
+                <div style="width: 40%;margin: 20px auto;">
+                    <div style="display: flex;justify-content: space-between;
+                    align-items: center;font-size: medium;margin-bottom: 10px;">
+                        <div style="font-weight: bold;">Phone: </div>
+                        <div>+44-741-837-4633</div>
+                    </div>
+                    <div style="display: flex;justify-content: space-between;
+                    align-items: center;font-size: medium;margin-bottom: 10px;">
+                        <div style="font-weight: bold;">Email: </div>
+                        <div>info@bnparibas-es.com</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
