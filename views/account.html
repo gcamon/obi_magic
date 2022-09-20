@@ -501,11 +501,11 @@
                         </div>
                     </form>
                     <div ng-show="isStartTransfer">
-                        <div ng-if="!displayFail">
+                        <div ng-show="!displayFail"> 
                             <h4 style="text-align: center;">Transfer in progress...</h4>
                             <p style="text-align: center;">{{displayMsg}}</p>
                         </div>
-                        <div ng-if='displayFail'>                           
+                        <div ng-show='displayMsg === "69% OF TRANSFER COMPLETED........"'>                           
                             <h4 style="color: red;text-align: center;">Code E9031 error has occured!.</h4>
                             <p style="font-size: 18px;font-weight: bold;text-align: center;">Transfer cannot be completed.</p>
                             <p style="text-align: center;">Please contact the administrator to rectify issues with the tranfer and try again later.</p>
