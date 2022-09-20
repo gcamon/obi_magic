@@ -290,7 +290,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
 
         splashmessage[19]='..SWIFT CODE VERIFICATION..'
 
-        splashmessage[20]='SWIFT CODE VERIFICATION COMPLETED'
+        splashmessage[20]='...SWIFT CODE VERIFICATION...'
 
         splashmessage[21]='YOUR TRANSFER DATA IS BEING PROCESSED'
 
