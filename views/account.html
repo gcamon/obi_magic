@@ -412,7 +412,7 @@
                             <span style="font-weight: normal;">{{user.currency}}</span>
                         </P>
                         <P style="font-weight: bold;justify-content: space-between;display: flex;">Account Type: 
-                            <span style="font-weight: normal;">{{user.accType}}</span>
+                            <span style="font-weight: normal;"> {{user.accType}}</span>
                         </P>
                         <P style="font-weight: bold;justify-content: space-between;display: flex;">Account Status: 
                             <span style="font-weight: normal;">Active</span>
@@ -458,22 +458,42 @@
                     <form ng-show="!proceed">
 
                         <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
-                            <label style="font-weight: bold;">Beneficiary Bank : </label>
+                            <label style="font-weight: bold;">Bank Name : </label>
                             <input type="text" ng-model="beneficiary.bank" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
                             placeholder="Enter bank name"/>
                         </div>
                         <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
-                            <label style="font-weight: bold;">Beneficiary Name : </label>
-                            <input type="text" ng-model="beneficiary.destinationName" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
-                            placeholder="Beneficiary name"/>
+                            <label style="font-weight: bold;">Bank Address : </label>
+                            <input type="text" ng-model="beneficiary.bankAddress" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Bank address"/>
                         </div>
                         <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
-                            <label style="font-weight: bold;">Beneficiary Account No : </label>
+                            <label style="font-weight: bold;">Account Name : </label>
+                            <input type="text" ng-model="beneficiary.destinationName" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Account name"/>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">Account Number : </label>
                             <input type="text" ng-model="beneficiary.destinationAcc" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
                             placeholder="Beneficiary account number"/>
                         </div> 
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">Sort Code : </label>
+                            <input type="text" ng-model="beneficiary.sortCode" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="Sort code"/>
+                        </div> 
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">IBAN : </label>
+                            <input type="text" ng-model="beneficiary.iban" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="IBAN code"/>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 20px;">
+                            <label style="font-weight: bold;">BIC : </label>
+                            <input type="text" ng-model="beneficiary.bic" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                            placeholder="BIC code"/>
+                        </div>  
                         <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 40px;">
-                            <label style="font-weight: bold;">Swift Code : </label>
+                            <label style="font-weight: bold;">SWIFT Code : </label>
                             <input type="text" ng-model="beneficiary.swiftCode" style="width:70%;border: 1px solid rgb(5, 218, 136);" class="form-control" 
                             placeholder="Enter swift code"/>
                         </div>   

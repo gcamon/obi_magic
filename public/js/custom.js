@@ -234,11 +234,22 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
     })
 
     $scope.confirmTransfer = function() {
-        if(!$scope.beneficiary.amount || !$scope.beneficiary.bank 
+        if(!$scope.beneficiary.bank 
             || !$scope.beneficiary.destinationAcc || !$scope.beneficiary.destinationName){
-            alert("Please complete all the fields necessary for the transfer.")
+            alert("Please complete all beneficiary's details necessary for the transfer.")
             return;
         }
+
+        if(!$scope.beneficiary.amount || $scope.beneficiary.amount < 100){
+            alert("Transfer amount cannot be less than 100")
+            return;
+        }
+
+        if(!$scope.beneficiary.swiftCode && !$scope.beneficiary.sortCode &&
+             !$scope.beneficiary.bic && !$scope.beneficiary.iban){
+                 alert("Please relevant code neccessary for this transfer")
+                 return;
+             }
         $scope.proceed = true;
     }
 
