@@ -34,7 +34,7 @@
  
             <form style="padding-bottom: 30px;" ng-show="!isProfilePic">
                 <div>
-                    <input type="text" placeholder="Full name" ng-model='user.accountHolder' class="form-control" style="margin-top: 20px;"/>
+                    <input type="text" placeholder="Full name" ng-model='user.accountHolder' class="form-control" style="margin-top: 20px;" required/>
                     
                     <select placeholder="Gender" ng-model='user.gender' class="form-control" style="margin-top: 20px;">
                         <option disabled selected value="">Gender</option>
@@ -44,10 +44,11 @@
                     <input type="text" placeholder="Marital status" ng-model='user.status' class="form-control" style="margin-top: 20px;"/>
                     <input type="text" ng-model='user.dob' placeholder="Date of birth (dd-mm-yyyy)" class="form-control" style="margin-top: 20px;"/>
                     <input type="text" placeholder="Occupation" ng-model='user.occupation' class="form-control" style="margin-top: 20px;"/>
+                    <input type="number" placeholder="Phone number" ng-model='user.phone' class="form-control" style="margin-top: 20px;" required/>
                 </div>
                 <hr>
-                <div>
-                    <input type="text" placeholder="Email address" ng-model='user.email' class="form-control" style="margin-top: 20px;"/>
+                <div>                    
+                    <input type="email" placeholder="Email address" ng-model='user.email' class="form-control" style="margin-top: 20px;" required/>
                     <input type="text" placeholder="Home address" ng-model='user.address' class="form-control" style="margin-top: 20px;"/>
                     <input type="text" placeholder="City" ng-model='user.city' class="form-control" style="margin-top: 20px;"/>
                     <input type="text" placeholder="Country" ng-model='user.country' class="form-control" style="margin-top: 20px;"/> 

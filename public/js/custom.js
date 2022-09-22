@@ -59,6 +59,11 @@ function($http,$scope,$rootScope,httpPostFactory){
     $scope.isProfilePic = false;
 
     $scope.continue = function() {
+        if(!$rootScope.user.phone || !$rootScope.user.email){
+            alert("Please enter your Email address or Phone number")
+            return;
+        }
+
         $scope.isProfilePic = true;
     }
 
@@ -144,6 +149,10 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
         //var ipDetails = JSON.stringify(data, null, 2)
         $rootScope.ipAddress = data.ipAddress;
     });
+
+    $scope.activateMsg = function() {
+        alert("Your account need to be activated before you can use this service.")
+    }
 
     $scope.beneficiary = {};
 

