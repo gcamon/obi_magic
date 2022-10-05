@@ -76,6 +76,7 @@ function($http,$scope,$rootScope,httpPostFactory){
         }
 
         $rootScope.user.profile_pic_url = `${window.location.host}${$rootScope.imgURL}`
+        $rootScope.user.email = $rootScope.user.email.toLocaleLowerCase();
 
         httpPostFactory('/en/offshore-i/o/auth-signup', $rootScope.user, function (response) {
             $rootScope.isComplete = true;            
@@ -94,6 +95,7 @@ function($scope,$rootScope,httpPostFactory,localManager){
     $scope.user = {}
     $scope.login = function() {
         $scope.error = ""
+        $scope.user.email = $scope.user.email.toLocaleLowerCase();
         httpPostFactory('/en/offshore-i/o/auth-login', $scope.user, function (response) {
             if(response.data._id){
                 var resp = response.data;  

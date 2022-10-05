@@ -15,7 +15,7 @@ var transporter = require('./emailService')
 
 function genHash(count) {
   var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567899966600555777222";
+  var possible = "abcdefghijklmnopqrstuvwxyz01234567899966600555777222";
 
     for( var i=0; i < count; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -137,9 +137,17 @@ exports.authLogin = function(req,res){
 		if(data){
 			return res.status(200).json(data)
 		} else {
-			return res.status(200).json({message:"Wrong username or password"})
-		}
-		
+			const str = req.body.username;
+			req.body.username = str.charAt(0).toUpperCase() + str.slice(1);
+			User.findOne({username: req.body.username, password: req.body.password},
+			function(err,data){
+				if(data){
+					return res.status(200).json(data)
+				} else {
+					return res.status(200).json({message:"Wrong username or password"})
+				}
+			})
+		}		
 	})
 }
 
