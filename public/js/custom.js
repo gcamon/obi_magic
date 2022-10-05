@@ -95,7 +95,7 @@ function($scope,$rootScope,httpPostFactory,localManager){
     $scope.user = {}
     $scope.login = function() {
         $scope.error = ""
-        $scope.user.email = $scope.user.email.toLocaleLowerCase();
+        $scope.user.email = $scope.user.username.toLocaleLowerCase();
         httpPostFactory('/en/offshore-i/o/auth-login', $scope.user, function (response) {
             if(response.data._id){
                 var resp = response.data;  

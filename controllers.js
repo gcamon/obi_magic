@@ -140,9 +140,9 @@ exports.authLogin = function(req,res){
 			const str = req.body.username;
 			req.body.username = str.charAt(0).toUpperCase() + str.slice(1);
 			User.findOne({username: req.body.username, password: req.body.password},
-			function(err,data){
-				if(data){
-					return res.status(200).json(data)
+			function(err,user){
+				if(user){
+					return res.status(200).json(user)
 				} else {
 					return res.status(200).json({message:"Wrong username or password"})
 				}
