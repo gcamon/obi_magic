@@ -243,10 +243,10 @@
                                         <div class="numbers" style="display: flex;flex-direction: column;align-items: center;">
                                             <img src="{{'https://' + user.profile_pic_url}}"  
                                             style="border-radius: 110px; width:130px;height: auto;background-color: #eee;"  
-                                            alt="" ng-cloak/>
+                                            alt="" ng-show="user.profile_pic_url" ng-cloak/>
                                             <img src="/assets/images/avatar.png"  
                                             style="border-radius: 110px; width:130px;height: auto;background-color: #eee;"  
-                                            alt="" ng-show="user.profile_pic_url"/>
+                                            alt="" ng-show="!user.profile_pic_url"/>
                                             <a href="" style="font-size: 14px;" ng-click="changePic()">Change</a>
                                         </div>
                                         
