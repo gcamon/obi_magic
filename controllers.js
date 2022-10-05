@@ -31,6 +31,10 @@ exports.home = function(req,res) {
 	}
 }
 
+exports.policy = function(req,res){
+	res.render('policy')
+} 
+
 
 exports.home2 = function(req,res) {
 	res.render("home");

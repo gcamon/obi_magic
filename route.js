@@ -4,6 +4,9 @@ module.exports = function(app) {
 	app.route('/')
 	.get(core.home)
 
+	app.route('/policy')
+	.get(core.policy)
+
 	app.route('/en')
 	.get(core.empty)
 
