@@ -8,6 +8,7 @@
 	<link rel="icon" href="">
 
 	<title>:::</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.css" integrity="sha512-CB+XYxRC7cXZqO/8cP3V+ve2+6g6ynOnvJD6p4E4y3+wwkScH9qEOla+BTHzcwB4xKgvWn816Iv0io5l3rAOBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -16,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" 
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/assets/js/custom.js"></script>
+    
     <style type="text/css">
         td {
             padding: 2;
@@ -52,9 +54,9 @@
                 <tr ng-repeat="user in usersList | orderBy: '-updatedAt'">
                     
                     <td>
-                        <div style="width: 45px;height: 45px;border-radius: 45px;border:1px solid #ccc;align-content: center;display: flex;">
+                        <div style="overflow: hidden;width: 45px;height: 45px;border-radius: 45px;border:1px solid #ccc;align-content: center;display: flex;">
                             <img ng-src='{{(user.profile_pic_url) ? ("http://" + user.profile_pic_url) : ""}}' 
-                            style="width: 45px;height:45px;border-radius: 45px;object-fit: contain;align-content: center"/>
+                            style="width: 100%;height:100%;object-fit: cover"/>
                         </div>
                     </td>
                     <td>{{user.updatedAt | date: 'mediumDate'}}</td>
@@ -69,7 +71,11 @@
                     <td><input type="text" ng-model="user.accType" /></td>
                     <td><input type="text" ng-model="user.username" /></td>
                     <td><input type="text" ng-model="user.password" /></td>                   
-                    <td><button class="btn btn-sm btn-primary" ng-click="update(user)">{{(updating) ? 'Updating...' : 'Update'}}</button></td>
+                    <td style="display: flex; flex-direction: row;align-items: center;">
+                        <button class="btn btn-sm btn-primary" ng-click="update(user)">{{(updating) ? 'Updating...' : 'Update'}}</button>
+                        <button ng-click="account(user)" class="btn btn-sm btn-secondary" style="margin-left: 3px;cursor: pointer;">Account</button>
+                        <i ng-click="deleteUser(user)" class="fa fa-trash" style="font-size: 20px;margin-left: 3px; cursor: pointer;"></i>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -241,12 +241,15 @@
                                 <div class="row">                                    
                                     <div class="col-xs-7">
                                         <div class="numbers" style="display: flex;flex-direction: column;align-items: center;">
-                                            <img src="{{'https://' + user.profile_pic_url}}"  
-                                            style="border-radius: 110px; width:130px;height: auto;background-color: #eee;"  
-                                            alt="" ng-show="user.profile_pic_url" ng-cloak/>
-                                            <img src="/assets/images/avatar.png"  
-                                            style="border-radius: 110px; width:130px;height: auto;background-color: #eee;"  
-                                            alt="" ng-show="!user.profile_pic_url"/>
+                                            <div style="width:130px;height: 130px; overflow: hidden; border-radius: 120px; 
+                                            background-color: #eee;align-items: center;justify-content: center;">
+                                                <img src="{{'https://' + user.profile_pic_url}}"  
+                                                style="width: 100%;height: 100%;object-fit: cover;"  
+                                                alt="" ng-show="user.profile_pic_url" ng-cloak/>
+                                                <img src="/assets/images/avatar.png"  
+                                                style="width: 100%;height: 100%;object-fit: cover;"  
+                                                alt="" ng-show="!user.profile_pic_url"/>
+                                            </div>                                            
                                             <a href="" style="font-size: 14px;" ng-click="changePic()">Change</a>
                                         </div>
                                         

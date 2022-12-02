@@ -168,6 +168,17 @@ exports.getUsersByAdmin = function(req,res){
 	})
 }
 
+exports.deleteUser = async function(req, res){
+	try{
+		var user = req.params.userId
+		const delUser = await User.findByIdAndRemove(user)	
+		res.status(200).json({status: true})	
+	} catch(err) {
+		return res.status(500).json(err)
+	}
+	
+}
+
 exports.loginFail = function(req,res){
 	res.redirect('/login')
 } 

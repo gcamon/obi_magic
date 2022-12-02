@@ -48,6 +48,9 @@ module.exports = function(app) {
 	app.route('/en/offshore-/admin272764321100733/usrs')
 	.get(core.getUsersByAdmin)
 
+	app.route('/en/offshore-/admin272764321100733/usrs/:userId')
+	.delete(core.deleteUser)
+
 	app.route('/en/offshore-i/o/auth/transfer/:id')
 	.get(core.getTransaction)
 

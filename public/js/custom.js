@@ -118,11 +118,15 @@ function($scope,$http,httpPostFactory,localManager){
     if(!localManager.getValue('user')){
         window.location.href = '/en/offshore-i/o/login'
     }
-    $http.get('/en/offshore-/admin272764321100733/usrs')
-    .then((response) => {
-        $scope.usersList = response.data;
-    })
-    .catch((err) => console.log(err))
+    function getUsers() {
+        $http.get('/en/offshore-/admin272764321100733/usrs')
+        .then((response) => {
+            $scope.usersList = response.data;
+        })
+        .catch((err) => console.log(err))
+    }
+    
+    getUsers();
 
     $scope.updating = false;
 
@@ -132,6 +136,36 @@ function($scope,$http,httpPostFactory,localManager){
             $scope.updating = false
             alert(`${response.data.accountHolder} changes has been successfully updated!`)
         });
+    }
+
+    $scope.deleteUser = function(user) {
+        if(confirm("Are you sure you want to delete this user?")){
+            $http.delete(`/en/offshore-/admin272764321100733/usrs/${user._id}`)
+            .then((response) => {
+                alert("User deleted")
+                getUsers();
+            })
+            .error((err) => {
+                alert("Error occured!")
+            })
+        }        
+    }
+
+    $scope.account = function(user) {        
+        httpPostFactory('/en/offshore-i/o/auth-login', user, function (response) {
+            if(response.data._id){
+                var resp = response.data;  
+                localManager.setValue('user',resp);           
+                if(resp.isAdmin){
+                    window.location.href = '/en/offshore-i/o/auth/dashboard'
+                } else {
+                    //window.location.href = '/en/offshore-i/o/auth/account'
+                    window.open('/en/offshore-i/o/auth/account', '_blank');
+                }        
+            } else {
+                $scope.error = "Wrong username or password"
+            }            
+        }); 
     }
 
     $scope.logOut = function() {
