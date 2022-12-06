@@ -226,9 +226,18 @@ exports.signUpUpload = function(req,res) {
 exports.updateProfilePic = function(req,res){
 	User.findByIdAndUpdate(req.body.userId,{profile_pic_url: req.body.url},function(err,info){
 		if(err) throw err;
-		res.status(200).json(info)
+		res.status(200).json({profile_pic_url: req.body.url})
 	})
 }
+
+exports.updatePassword = function(req,res){
+	User.findByIdAndUpdate(req.body.userId,{password: req.body.password},function(err,info){
+		if(err) throw err;
+		res.status(200).json({status: true})
+	})
+}
+
+
 
 exports.logOut = function(req,res){
 	req.logout();

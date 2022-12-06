@@ -178,12 +178,12 @@
                         <p>Contact Us</p>
                     </a>
                 </li>
-				<!--<li class="active-pro">
-                    <a href="passpin.php">
+				<li ng-class="isPasswordChange">
+                    <a href="" ng-click="navigate('changePassword')">
                         <i class="ti-settings"></i>
                         <p>Change Password</p>
                     </a>
-                </li>-->
+                </li>
             </ul>
     	</div>
     </div>
@@ -574,6 +574,29 @@
                 </div>
             </div>
         </div>
+        <div style="padding: 10px;" ng-show="isPasswordChange === 'active'">
+            <form style="width: 70%;margin: 30px auto;">
+
+                <div style="display: flex;justify-content: flex-start;align-items: center;margin-bottom: 20px;">
+                    <label style="font-weight: bold; padding-right: 40px;">New password : </label>
+                    <input type="text" ng-model="pass.password" style="border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                    placeholder="Enter new password"/>
+                </div>
+                <div style="display: flex;justify-content: flex-start;align-items: center;margin-bottom: 20px;">
+                    <label style="font-weight: bold;">Re-type new password : </label>
+                    <input type="text" ng-model="pass.password2" style="border: 1px solid rgb(5, 218, 136);" class="form-control" 
+                    placeholder="Re-type new password"/>
+                </div>    
+
+                <div style="margin-bottom: 20px;text-align: center;margin-top: 20px;">
+                    <button class="btn btn-primary" ng-click="updatePassword()">Update password</button>
+                </div>      
+            </form>
+            
+            
+
+        </div>
+        
     </div>
 
         <div style="height: 75px;"></div>

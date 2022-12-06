@@ -28,6 +28,7 @@ module.exports = function(app) {
 	app.route('/en/offshore-i/upload/auth-signup')
 	.post(core.signUpUpload)
 	.put(core.updateProfilePic)
+	.patch(core.updatePassword)
 
 	app.route('/en/offshore-i/o/auth-login')
 	.post(core.authLogin)

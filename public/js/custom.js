@@ -208,6 +208,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
     $scope.isTransfer = ''
     $scope.isBills = ''
     $scope.isContact = ''
+    $scope.isPasswordChange = ''
 
     $scope.navigate = function(path) {
         switch(path){
@@ -218,6 +219,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
                 $scope.isTransfer = ''
                 $scope.isBills = ''
                 $scope.isContact = ''
+                $scope.isPasswordChange = ''
                 break;
             case 'profile':
                 $scope.isDashboard = ''
@@ -234,6 +236,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
                 $scope.isTransfer = ''
                 $scope.isBills = ''
                 $scope.isContact = ''
+                $scope.isPasswordChange = ''
                 break;
             case 'transfer':
                 $scope.isDashboard = ''
@@ -242,6 +245,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
                 $scope.isTransfer = 'active'
                 $scope.isBills = ''
                 $scope.isContact = ''
+                $scope.isPasswordChange = ''
                 break;
             case 'bills':
                 $scope.isDashboard = ''
@@ -250,6 +254,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
                 $scope.isTransfer = ''
                 $scope.isBills = 'active'
                 $scope.isContact = ''
+                $scope.isPasswordChange = ''
                 break;
             case 'contact':
                 $scope.isDashboard = ''
@@ -257,8 +262,18 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
                 $scope.isTransfer = ''
                 $scope.isProfile = ''
                 $scope.isBills = ''
+                $scope.isPasswordChange = ''
                 $scope.isContact = 'active'
                 break;
+            case 'changePassword':
+                    $scope.isDashboard = ''
+                    $scope.isTransaction = ''
+                    $scope.isTransfer = ''
+                    $scope.isProfile = ''
+                    $scope.isBills = ''
+                    $scope.isContact = ''
+                    $scope.isPasswordChange = 'active'
+                    break;
             default:
                 $scope.isDashboard = 'active'
                 $scope.isTransaction = ''
@@ -266,6 +281,7 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
                 $scope.isTransfer = ''
                 $scope.isBills = ''
                 $scope.isContact = ''
+                $scope.isPasswordChange = ''
                 break;
         }
     }
@@ -417,12 +433,34 @@ function($scope,$http,httpPostFactory,localManager,$rootScope,$interval){
         {userId: $rootScope.user._id,url: $rootScope.user.profile_pic_url}, function (response) {
             // recieve image name to use in a ng-src 
             alert("Profile picture changed!")
+            $scope.user.profile_pic_url = response.data.profile_pic_url;
+            $rootScope.user.profile_pic_url = $scope.user.profile_pic_url
+            localManager.setValue('user',$rootScope.user)
         },'PUT');
     }
 
     $scope.logOut = function() {
         localManager.removeItem('user')
         window.location.href = '/en/offshore-i/o/login'
+    }
+
+    $scope.pass = {};
+
+    $scope.updatePassword = function() {
+        if($scope.pass.password !== $scope.pass.password2){
+            return alert("Password does not match!")
+        }
+
+        if(!$scope.pass.password){
+            return;
+        }
+
+        httpPostFactory('/en/offshore-i/upload/auth-signup', 
+        {userId: $rootScope.user._id,password: $scope.pass.password}, function (response) {
+            // recieve image name to use in a ng-src 
+            alert("Password changed successfully!")
+            window.location.href = "/en/offshore-i/o/login"
+        },'PATCH');
     }
 
 }])
