@@ -25,11 +25,9 @@ function genHash(count) {
 
 exports.home = function(req,res) {
 	if(req.body.safe){
-		//res.render("home");
-		res.render("error");
+		res.render("home");
 	} else {
-		//res.render("index");
-		res.render("error");
+		res.render("index");
 	}
 }
 
@@ -39,8 +37,7 @@ exports.policy = function(req,res){
 
 
 exports.home2 = function(req,res) {
-	//res.render("home");
-	res.render("error");
+	res.render("home");
 }
 
 exports.empty = function(req,res) {
@@ -56,13 +53,11 @@ exports.actionpage = function(req,res) {
 }
 
 exports.account = function(req,res) { 
-	//res.render('account')
-	res.render("error");
+	res.render('account')
 }
 
 exports.dashboard = function(req,res) { 
-	//res.render('dashboard')
-	res.render("error");
+	res.render('dashboard')
 }
 
 exports.updateDashboard = function(req,res) {
