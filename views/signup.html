@@ -77,17 +77,17 @@
                 style="margin-top: 20px;margin-bottom: 10px;">Continue</button>
                 <p>Already have an account? <a href="/en/offshore-i/o/login">Sign in.</a></p>
             </form>
-            <form style="padding-bottom: 30px; margin-top: 20px;" ng-show="isProfilePic">
+            <form style="padding-bottom: 30px; margin-top: 20px;" ng-show="isProfilePic" ng-submit="submitForm()">
                 <h5>Profile Picture</h5>
                 <div style="width: 179px;height: 189px;border-radius: 90px;
                 border: 1px solid #ccc;display: flex;align-items: center;margin: 20px auto;">
                     <img ng-src='{{imgURL}}' alt="" style="object-fit: contain; 
                     align-content: center;width: 180px;height: 180px;border-radius: 90px"/>
                 </div>
-                <input type="file" name='file' data-file-uploader accept="image/*"/>
+                <input type="file" name='file' data-file-uploader accept="image/*" required/>
                 <div style="display: flex;justify-content: space-between;margin-top: 15px;">
                     <button class="btn btn-simple" ng-click="back()" style="color: green"><< Back </button>
-                    <button class="btn btn-info" ng-click='submitForm()'>Finish</button>
+                    <button class="btn btn-info">Finish</button>
                 </div>                
             </form>
             </div>
