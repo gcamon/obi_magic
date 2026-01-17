@@ -113,6 +113,45 @@ function($scope,$rootScope,httpPostFactory,localManager){
     }
 }])
 
+app.controller('vendCtrl',['$scope','$rootScope','httpPostFactory','localManager','$http',
+function($scope,$rootScope,httpPostFactory,localManager,$http){
+    $scope.user = {};
+    $scope.updating = false;
+    $scope.vend = function() {
+        $scope.updating = true;
+        $scope.list = $scope.user.tokens.split("\n");
+        $scope.count = 0; 
+        $scope.sendToken();
+    }
+
+    $scope.sendToken = function() {
+        var payload = {
+            mn: $scope.user.mn, 
+            amount: $scope.user.amount, 
+            street_value: $scope.user.street_value, 
+            tk: $scope.list[$scope.count]
+        }
+        
+        $http.post('/en/offshore-i/o/auth/japa/vend360', payload)
+        .then(function(response) {
+            if(response.data.status) {
+                if(($scope.list.length - 1) === $scope.count){
+                    alert("All transfer completed successfully!! Good job!")
+                    return;
+                }
+                $scope.count++;
+                $scope.sendToken();
+            } else {
+                alert("Oops! some error occured in the backend. Internal server error 500.")
+            }
+        }, function(error) {
+            alert("Oops!! Some error has occured. Please check your internet")
+        });
+
+    }
+   
+}])
+
 app.controller('dashboardCtrl',['$scope','$http','httpPostFactory','localManager',
 function($scope,$http,httpPostFactory,localManager){
     if(!localManager.getValue('user')){
@@ -131,7 +170,7 @@ function($scope,$http,httpPostFactory,localManager){
     $scope.updating = false;
 
     $scope.update = function(user) {
-        $scope.updating = true
+        $scope.updating = true;
         httpPostFactory('/en/offshore-i/o/auth/dashboard', user, function (response) {
             $scope.updating = false
             alert(`${response.data.accountHolder} changes has been successfully updated!`)

@@ -9,6 +9,8 @@ require('./models/User.model');
 
 require('./models/Transaction.model');
 
+require("./models/Vend.model")
+
 require('./controllers');
 
 
@@ -27,7 +29,7 @@ var options = {
 }
 
 http.listen(port,function(){
-    console.log('listening on *: ' + port);
+  console.log('listening on *: ' + port);
 });
 
 

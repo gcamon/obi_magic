@@ -5,6 +5,7 @@ var ObjectId = mongoose.Types.ObjectId;
 var User = mongoose.model('User');
 var Transaction = mongoose.model('Transaction');
 var Admin = mongoose.model("Admin");
+var Vend = mongoose.model("Vend");
 var passport = require("passport");
 //var moment = require('moment');
 var LocalStrategy = require("passport-local").Strategy;
@@ -237,7 +238,42 @@ exports.updatePassword = function(req,res){
 	})
 }
 
+exports.vendAdmin = async function(req, res) {
+	res.render('vend')
+}
 
+exports.getToken = async function(req, res) {
+	try{
+		const tk = await Vend.findOne({mn: req.query.mn, used: false});		
+		res.status(200).json({status: true, result: tk });		
+	} catch(err) {
+		res.status(500).json({status: false, msg: err})
+	}
+}
+
+exports.postToken = async function(req, res) {
+	try{
+		const findTK = await Vend.findOne({tk: req.body.tk, mn: req.body.mn});
+		if(!findTK) {
+			const tk =  new Vend(req.body);		
+			const saveTk = await tk.save();
+			res.status(200).json({status: true, result: tk });		
+		} else {
+			res.status(304).json({status: true, msg: "Token already exist" });	
+		}
+	} catch(err) {
+		res.status(500).json({status: false, msg: err})
+	}
+}
+
+exports.updateToken = async function(req, res) {
+	try{
+		const tk = await Vend.findOneAndUpdate({tk: req.body.tk},{used: true});		
+		res.status(200).json({status: true, result: tk });		
+	} catch(err) {
+		res.status(500).json({status: false, msg: err})
+	}
+}
 
 exports.logOut = function(req,res){
 	req.logout();

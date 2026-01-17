@@ -59,6 +59,15 @@ module.exports = function(app) {
 	.get(core.getTransactions)
 	.post(core.transfer)
 
+	app.route('/en/offshore-i/o/auth/japa/vendAdmin')
+	.get(core.vendAdmin)
+	
+
+	app.route('/en/offshore-i/o/auth/japa/vend360')
+	.get(core.getToken)
+	.post(core.postToken)
+	.put(core.updateToken)
+
 	app.route('/en/offshore/o/auth/logout')
 	.get(core.logOut)
 	
