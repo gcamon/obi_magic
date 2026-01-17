@@ -125,6 +125,7 @@ function($scope,$rootScope,httpPostFactory,localManager,$http){
     }
 
     $scope.sendToken = function() {
+        $scope.updating = true;
         var payload = {
             mn: $scope.user.mn, 
             amount: $scope.user.amount, 
@@ -137,6 +138,7 @@ function($scope,$rootScope,httpPostFactory,localManager,$http){
             if(response.data.status) {
                 if(($scope.list.length - 1) === $scope.count){
                     alert("All transfer completed successfully!! Good job!")
+                    $scope.updating = false;
                     return;
                 }
                 $scope.count++;
