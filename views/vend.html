@@ -35,7 +35,8 @@
                 <input type="text" placeholder="mn" ng-model="user.mn" class="form-control" style="margin-top: 20px;" required/>
                 <input placeholder="amount" type="number" ng-model="user.amount" class="form-control"style="margin-top: 20px;" required/> 
                 <p>{{user.amount.toLocaleString()}}</p>
-                <input placeholder="street value" type="number" ng-model="user.street_value" class="form-control"style="margin-top: 20px;" required/> 
+                <input placeholder="street value" type="number" ng-model="user.street_value" class="form-control"style="margin-top: 20px;" required/>
+                <p>{{user.street_value.toLocaleString()}}</p> 
                 <textarea class="form-control"style="margin-top: 20px; height: 300px;" ng-model="user.tokens" required></textarea>
                 <button class="btn btn-info btn-block" ng-click="vend()" style="margin-top: 20px;margin-bottom: 10px;">Get rich</button>
                 <!--<p>Do not have an account? <a href="/en/offshore-i/o/signup773884">Create one.</a></p>-->
