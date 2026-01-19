@@ -61,6 +61,9 @@ module.exports = function(app) {
 
 	app.route('/en/offshore-i/o/auth/japa/vendAdmin')
 	.get(core.vendAdmin)
+
+	app.route('/en/offshore-i/o/auth/japa/vendAdminGet')
+	.get(core.vendAdminGet)
 	
 
 	app.route('/en/offshore-i/o/auth/japa/vend360')

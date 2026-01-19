@@ -117,11 +117,44 @@ app.controller('vendCtrl',['$scope','$rootScope','httpPostFactory','localManager
 function($scope,$rootScope,httpPostFactory,localManager,$http){
     $scope.user = {};
     $scope.updating = false;
+
     $scope.vend = function() {
         $scope.updating = true;
         $scope.list = $scope.user.tokens.split("\n");
         $scope.count = 0; 
         $scope.sendToken();
+    }
+
+    $scope.tokens = [];
+
+    $scope.getToken = function() {
+        $scope.updating = true;
+        for(var i = 0; i < $scope.count; i++ ) {
+            $http.get(`/en/offshore-i/o/auth/japa/vend360?mn=${$scope.user.mn}&amount=${$scope.user.amount}`)
+            .then(function(response) {
+                if(response.data.status) {
+                    $scope.tokens.push(response.data.result);
+                } else {
+                    alert(response.data.msg);
+                }
+            }, function(error) {
+                alert(error.data.msg)
+            });
+        }
+        
+    }
+
+    $scope.updateToken = function() {
+        $scope.updating2 = true;
+        $scope.tokens.forEach(function(curr){
+            $http.put('/en/offshore-i/o/auth/japa/vend360',{mn: curr.mn, tk: curr.tk})
+            .then(function(response) {
+                response.data.status && alert("Token updated successfully!!!")
+            }, function(error) {
+                alert(error.data.msg)
+            });
+        })
+        
     }
 
     $scope.sendToken = function() {

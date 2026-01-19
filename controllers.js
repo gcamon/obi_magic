@@ -238,14 +238,24 @@ exports.updatePassword = function(req,res){
 	})
 }
 
+exports.vendAdminGet = async function(req, res) {
+	res.render('vend2')
+}
+
 exports.vendAdmin = async function(req, res) {
 	res.render('vend')
 }
 
 exports.getToken = async function(req, res) {
 	try{
-		const tk = await Vend.findOne({mn: req.query.mn, used: false});		
-		res.status(200).json({status: true, result: tk });		
+		const tk = await Vend.findOne({mn: req.query.mn, amount: parseInt(req.query.amount), used: false});	
+		if(tk){
+			const updateToken = await Vend.findOneAndUpdate({tk: tk.tk, mn: tk.mn},{$set:{used: true}});
+			res.status(200).json({status: true, result: tk });
+		} else {
+			res.status(301).json({status: false, msg: "Oops! Seems token for this client has finished or does not exist anymore" });
+		}
+				
 	} catch(err) {
 		res.status(500).json({status: false, msg: err})
 	}
@@ -268,10 +278,10 @@ exports.postToken = async function(req, res) {
 
 exports.updateToken = async function(req, res) {
 	try{
-		const tk = await Vend.findOneAndUpdate({tk: req.body.tk},{used: true});		
+		const tk = await Vend.findOneAndUpdate({tk: req.body.tk, mn: req.body.mn},{$set:{used: false}});		
 		res.status(200).json({status: true, result: tk });		
 	} catch(err) {
-		res.status(500).json({status: false, msg: err})
+		res.status(500).json({status: false, msg: "update failed"})
 	}
 }
 
