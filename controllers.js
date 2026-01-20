@@ -262,6 +262,13 @@ exports.getToken = async function(req, res) {
 }
 
 exports.postToken = async function(req, res) {
+	// let total = 0;	
+	// const tokens = await Vend.find({})
+	// tokens.forEach(doc => {
+	//  total += doc.street_value; // Add the field's value to the total
+	// });
+	// console.log(total.toLocaleString());
+	// return;
 	try{
 		const findTK = await Vend.findOne({tk: req.body.tk, mn: req.body.mn});
 		if(!findTK) {
@@ -269,9 +276,10 @@ exports.postToken = async function(req, res) {
 			const saveTk = await tk.save();
 			res.status(200).json({status: true, result: tk });		
 		} else {
-			res.status(304).json({status: true, msg: "Token already exist" });	
+			res.status(200).json({status: true, msg: "Token already exist" });	
 		}
 	} catch(err) {
+		console.log(err)
 		res.status(500).json({status: false, msg: err})
 	}
 }
