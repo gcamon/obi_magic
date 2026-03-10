@@ -262,13 +262,22 @@ exports.getToken = async function(req, res) {
 }
 
 exports.postToken = async function(req, res) {
-	// let total = 0;	
+	// let total = 0;
+	// let total2 = 0;
+	// let noV = 0
 	// const tokens = await Vend.find({})
 	// tokens.forEach(doc => {
-	//  total += doc.street_value; // Add the field's value to the total
+	//  if(!doc.amount) noV++;
+	//  if(doc.amount)
+	// 	total += doc.amount; // Add the field's value to the total
+	//  total2 += doc.street_value;
 	// });
-	// console.log(total.toLocaleString());
+	// console.log(noV)
+	// console.log(total.toLocaleString() ,"/", total2.toLocaleString());
 	// return;
+	console.log("====>>>> ", req.body);
+
+	return res.status(200).json({})
 	try{
 		const findTK = await Vend.findOne({tk: req.body.tk, mn: req.body.mn});
 		if(!findTK) {
