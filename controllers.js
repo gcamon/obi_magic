@@ -276,9 +276,7 @@ exports.postToken = async function(req, res) {
 	// console.log(noV)
 	// console.log(total.toLocaleString() ,"/", total2.toLocaleString());
 	// return;
-	console.log("====>>>> ", req.body);
-
-	return res.status(200).json({})
+	
 	try{
 		const findTK = await Vend.findOne({tk: req.body.tk, mn: req.body.mn});
 		if(!findTK) {
