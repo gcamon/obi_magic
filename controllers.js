@@ -70,7 +70,8 @@ exports.updateDashboard = function(req,res) {
 }
 
 exports.login = function(req,res) {
-   res.render('login')
+  // res.render('login')
+  res.render('error.html')
 }	
 
 exports.signupPage = function(req,res) { 	
