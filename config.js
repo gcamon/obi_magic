@@ -12,6 +12,7 @@ var flash = require('connect-flash');
 var MongoDBStore = require('connect-mongodb-session')(session);
 var User = mongoose.model("User");
 var uuid = require('uuid');
+var cors = require('cors');
 
 
 function genHash(count) {
@@ -85,4 +86,10 @@ module.exports = function(app) {
 			done(err, user);				
 		});
 	});*/
+
+	
+
+	app.use(cors({
+		origin: 'https://bsshonline.com'
+	}));
 }
